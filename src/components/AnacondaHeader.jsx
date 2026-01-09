@@ -16,7 +16,7 @@
  */
 import cockpit from "cockpit";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Flex,
     Label,
@@ -28,19 +28,13 @@ import { InfoCircleIcon } from "@patternfly/react-icons";
 
 import { getIsFinal } from "../apis/runtime";
 
-import { NetworkContext } from "../contexts/Common.jsx";
-
-import { HeaderKebab } from "./HeaderKebab.jsx";
-
 import "./AnacondaHeader.scss";
 
 const _ = cockpit.gettext;
 const N_ = cockpit.noop;
 
-export const AnacondaHeader = ({ currentStepId, dispatch, isFormDisabled, onCritFail, reportLinkURL, setShowStorage, showStorage, title }) => {
+export const AnacondaHeader = ({ onCritFail, title }) => {
     const [beta, setBeta] = useState();
-    const network = useContext(NetworkContext);
-    const isConnected = network.connected;
 
     useEffect(() => {
         getIsFinal().then(
@@ -57,16 +51,6 @@ export const AnacondaHeader = ({ currentStepId, dispatch, isFormDisabled, onCrit
                     <Text component="h1">{title}</Text>
                 </TextContent>
                 {beta && <Beta />}
-                <HeaderKebab
-                  currentStepId={currentStepId}
-                  dispatch={dispatch}
-                  isConnected={isConnected}
-                  isFormDisabled={isFormDisabled}
-                  onCritFail={onCritFail}
-                  reportLinkURL={reportLinkURL}
-                  setShowStorage={setShowStorage}
-                  showStorage={showStorage}
-                />
             </Flex>
         </PageSection>
     );
