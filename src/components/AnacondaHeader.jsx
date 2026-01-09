@@ -4,7 +4,7 @@
  */
 import cockpit from "cockpit";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Content, ContentVariants } from "@patternfly/react-core/dist/esm/components/Content/index.js";
 import { Label } from "@patternfly/react-core/dist/esm/components/Label/index.js";
 import { PageSection } from "@patternfly/react-core/dist/esm/components/Page/index.js";
@@ -14,19 +14,13 @@ import { InfoCircleIcon } from "@patternfly/react-icons/dist/esm/icons/info-circ
 
 import { getIsFinal } from "../apis/runtime.js";
 
-import { NetworkContext } from "../contexts/Common.jsx";
-
-import { HeaderKebab } from "./HeaderKebab.jsx";
-
 import "./AnacondaHeader.scss";
 
 const _ = cockpit.gettext;
 const N_ = cockpit.noop;
 
-export const AnacondaHeader = ({ currentStepId, dispatch, isFormDisabled, onCritFail, reportLinkURL, setShowStorage, showStorage, title }) => {
+export const AnacondaHeader = ({ onCritFail, title }) => {
     const [beta, setBeta] = useState();
-    const network = useContext(NetworkContext);
-    const isConnected = network.connected;
 
     useEffect(() => {
         getIsFinal().then(
@@ -43,16 +37,6 @@ export const AnacondaHeader = ({ currentStepId, dispatch, isFormDisabled, onCrit
                     <Content component="h1">{title}</Content>
                 </Content>
                 {beta && <Beta />}
-                <HeaderKebab
-                  currentStepId={currentStepId}
-                  dispatch={dispatch}
-                  isConnected={isConnected}
-                  isFormDisabled={isFormDisabled}
-                  onCritFail={onCritFail}
-                  reportLinkURL={reportLinkURL}
-                  setShowStorage={setShowStorage}
-                  showStorage={showStorage}
-                />
             </Flex>
         </PageSection>
     );
