@@ -16,13 +16,10 @@ import { PendingIcon } from "@patternfly/react-icons/dist/esm/icons/pending-icon
 
 import { BossClient, getSteps, installWithTasks } from "../../apis/boss.js";
 
-import { exitGui } from "../../helpers/exit.js";
 
-import { OsReleaseContext, SystemTypeContext } from "../../contexts/Common.jsx";
+import { OsReleaseContext } from "../../contexts/Common.jsx";
 
 import { EmptyStatePanel } from "cockpit-components-empty-state.jsx";
-
-import { Feedback } from "./Feedback.jsx";
 
 import "./InstallationProgress.scss";
 
@@ -44,7 +41,6 @@ export const InstallationProgress = ({ onCritFail }) => {
     const [steps, setSteps] = useState();
     const [currentProgressStep, setCurrentProgressStep] = useState(0);
     const refStatusMessage = useRef("");
-    const isBootIso = useContext(SystemTypeContext).systemType === "BOOT_ISO";
     const osRelease = useContext(OsReleaseContext);
 
     useEffect(() => {
@@ -215,7 +211,7 @@ export const InstallationProgress = ({ onCritFail }) => {
               }
               secondary={
                   status === "success" &&
-                  <Button onClick={exitGui}>{isBootIso ? _("Reboot to installed system") : _("Exit to live desktop")}</Button>
+                  <Button onClick={() => cockpit.spawn(["systemctl", "reboot"])}>{_("Reboot to installed system")}</Button>
               }
               title={title}
               headingLevel="h2"
