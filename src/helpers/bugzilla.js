@@ -17,18 +17,15 @@
 
 /**
  * Create a Bugzilla URL for entering a bug report
- * @param {Object} - { product, version }
- * @returns {String} - The URL for entering a bug report in Bugzilla
+ * @param {String} baseURL - The base URL for the bug report (e.g. from /etc/os-release BUG_REPORT_URL)
+ * @param {Object} osReleaseData - { product, version }
+ * @returns {String} - The URL for entering a bug report
  */
-export const createBugzillaEnterBug = (osReleaseData) => {
-    const baseURL = "https://bugzilla.redhat.com";
+export const createBugzillaEnterBug = (baseURL, osReleaseData) => {
     const queryData = {
-        component: "anaconda",
         ...osReleaseData,
     };
     const reportURL = new URL(baseURL);
-
-    reportURL.pathname = "enter_bug.cgi";
 
     Object.keys(queryData).map(query => reportURL.searchParams.append(query, queryData[query]));
 

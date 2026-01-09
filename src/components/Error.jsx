@@ -44,12 +44,13 @@ const WEBUI_LOG = "/tmp/anaconda-webui.log";
 
 const useBugzillaPrefiledReportURL = () => {
     const {
-        REDHAT_BUGZILLA_PRODUCT: product,
-        REDHAT_BUGZILLA_PRODUCT_VERSION: version,
+        BUG_REPORT_URL: baseURL,
+        NAME: product,
+        VERSION_ID: version,
     } = useContext(OsReleaseContext);
     const { systemType } = useContext(SystemTypeContext);
     const isBootIso = systemType === "BOOT_ISO";
-    const href = createBugzillaEnterBug({ product, version });
+    const href = createBugzillaEnterBug(baseURL, { product, version });
 
     if (!isBootIso) {
         return href.replace("https", "extlink");
