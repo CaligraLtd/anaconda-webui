@@ -232,7 +232,6 @@ export const InstallationProgress = ({ onCritFail }) => {
               title={title}
               headingLevel="h2"
             />
-            {(status === "success" || status === "danger") && <Feedback />}
         </Flex>
     );
 };
