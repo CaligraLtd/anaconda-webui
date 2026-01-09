@@ -1,0 +1,91 @@
+:root {
+  /* Brand colors from palette */
+  --brand-white: #FFFFFF;
+  --brand-black: #000000;
+  --brand-iron: #2D2E2B;
+  --brand-palladium: #71726D;
+  --brand-silver: #B5B7AE;
+  --brand-aluminium: #E9EBE2;
+  --brand-gold: #C2A049;
+  --brand-copper: #B65822;
+
+  /* Map brand colors to PatternFly palette */
+  --pf-v5-global--palette--gold-50:  #FAF6EB;
+  --pf-v5-global--palette--gold-100: #F0E6C7;
+  --pf-v5-global--palette--gold-200: #DDCA8A;
+  --pf-v5-global--palette--gold-300: var(--brand-gold);
+  --pf-v5-global--palette--gold-400: #A6863A;
+  --pf-v5-global--palette--gold-500: #8A6F30;
+  --pf-v5-global--palette--gold-600: #6E5826;
+  --pf-v5-global--palette--gold-700: #52411C;
+
+  /* Primary colors - use gold as the accent */
+  --pf-v5-global--primary-color--100: var(--brand-gold);
+  --pf-v5-global--primary-color--200: var(--brand-copper);
+  --pf-v5-global--primary-color--300: #8A6F30;
+
+  /* Forward-compatible PF6 variable aliases */
+  --pf-t--global--color--brand--default: var(--brand-gold);
+  --pf-t--global--color--brand--hover: var(--brand-copper);
+  --pf-t--global--text--color--brand--default: var(--brand-gold);
+
+  /* Link colors */
+  --pf-v5-global--link--Color: var(--brand-gold);
+  --pf-v5-global--link--Color--hover: var(--brand-copper);
+  --pf-v5-global--link--Color--light: #DDCA8A;
+  --pf-v5-global--link--Color--light--hover: var(--brand-gold);
+  --pf-v5-global--link--Color--dark: #8A6F30;
+  --pf-v5-global--link--Color--dark--hover: #6E5826;
+  --pf-v5-global--link--Color--visited: #8A6F30;
+
+  /* Active colors */
+  --pf-v5-global--active-color--100: var(--brand-copper);
+  --pf-v5-global--active-color--200: #F0E6C7;
+  --pf-v5-global--active-color--300: var(--brand-gold);
+  --pf-v5-global--active-color--400: #DDCA8A;
+}
+
+/* Dark mode adjustments */
+.pf-v5-theme-dark {
+  --pf-v5-global--primary-color--100: var(--brand-gold);
+  --pf-v5-global--primary-color--light-100: var(--brand-gold);
+  --pf-v5-global--primary-color--dark-100: var(--brand-gold);
+  --pf-v5-global--primary-color--300: var(--brand-copper);
+
+  --pf-v5-global--link--Color: var(--brand-gold);
+  --pf-v5-global--link--Color--hover: #DDCA8A;
+  --pf-v5-global--link--Color--light: var(--brand-gold);
+  --pf-v5-global--link--Color--light--hover: #DDCA8A;
+  --pf-v5-global--link--Color--dark: var(--brand-gold);
+  --pf-v5-global--link--Color--dark--hover: #DDCA8A;
+
+  --pf-t--global--color--brand--default: var(--brand-gold);
+  --pf-t--global--color--brand--hover: #DDCA8A;
+  --pf-t--global--text--color--brand--default: var(--brand-gold);
+}
+
+/* Logo styling - adjust filter for your logo */
+.logo {
+  filter: brightness(0) invert(1);
+}
+
+/* Header with Iron background */
+.pf-v5-c-page__main-group > .pf-v5-c-page__main-section:first-child {
+  --_text: var(--brand-white);
+  background: var(--brand-iron);
+
+  .pf-v5-c-content {
+    --pf-v5-c-content--Color: var(--_text);
+  }
+
+  html.pf-v5-theme-dark & {
+    background: var(--brand-black);
+  }
+}
+
+/* Wizard navigation current step indicator */
+html:not(.pf-v5-theme-dark) {
+  .pf-v5-c-wizard__nav-link.pf-m-current::before {
+    --pf-v5-c-wizard__nav-link--m-current--before--BackgroundColor: var(--brand-gold);
+  }
+}
