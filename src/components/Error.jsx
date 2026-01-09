@@ -45,15 +45,12 @@ import "./Error.scss";
 
 const _ = cockpit.gettext;
 
-export const bugzillaPrefiledReportURL = (productQueryData, isBootIso) => {
-    const baseURL = "https://bugzilla.redhat.com";
+export const bugzillaPrefiledReportURL = (baseURL, productQueryData, isBootIso) => {
     const queryData = {
         ...productQueryData,
-        component: "anaconda",
     };
 
     const reportURL = new URL(baseURL);
-    reportURL.pathname = "enter_bug.cgi";
     Object.keys(queryData).map(query => reportURL.searchParams.append(query, queryData[query]));
     if (isBootIso) {
         return reportURL.href;

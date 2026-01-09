@@ -183,10 +183,14 @@ export const ApplicationWithErrorBoundary = () => {
         return <ApplicationLoading />;
     }
 
-    const bzReportURL = bugzillaPrefiledReportURL({
-        product: osRelease.REDHAT_BUGZILLA_PRODUCT,
-        version: osRelease.REDHAT_BUGZILLA_PRODUCT_VERSION,
-    }, isBootIso);
+    const bzReportURL = bugzillaPrefiledReportURL(
+        osRelease.BUG_REPORT_URL,
+        {
+            product: osRelease.NAME,
+            version: osRelease.VERSION_ID,
+        },
+        isBootIso
+    );
 
     return (
         <MainContextWrapper state={state} osRelease={osRelease} conf={conf}>
