@@ -48,3 +48,6 @@ user_pref("dom.disable_open_during_load", false);
 
 // Disable built in Password Manager / Password Generation
 user_pref("signon.generation.enabled", false);
+
+// FIX: Kiosk mode in Wayland https://github.com/labwc/labwc/issues/1902
+user_pref("widget.wayland.vsync.enabled", false);
