@@ -123,7 +123,8 @@ else
     pkexec --user "${INSTALLER_USER}" cp -a "${THEME_PATH}/." ${FIREFOX_PROFILE_PATH}
 
     # FIXME: is this hardcoded resolution necessary ?
-    BROWSER=(/usr/bin/firefox --new-instance --window-size "1024,768" --profile "${FIREFOX_PROFILE_PATH}")
+    BROWSER=(/usr/bin/firefox --new-instance --window-size "1024,768" --kiosk --profile "${FIREFOX_PROFILE_PATH}")
+    
 
     # start browser in a temporary home dir, so that it does not interfere with your real one
     BROWSER_HOME=$(mktemp --directory --tmpdir cockpit.desktop.XXXXXX)
