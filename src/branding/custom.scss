@@ -24,8 +24,10 @@
   --pf-t--global--text--color--brand--default: var(--brand-gold);
 }
 
-/* Logo styling - adjust filter for your logo */
+/* AnacondaHeader renders <div className="logo" />; AnacondaHeader.scss sets
+   sizing, we provide the image and tone it for the dark header background. */
 .logo {
+  background-image: url("./logo.svg");
   filter: brightness(0) invert(1);
 }
 
