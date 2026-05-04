@@ -16,7 +16,6 @@ import { PendingIcon } from "@patternfly/react-icons/dist/esm/icons/pending-icon
 
 import { BossClient, getSteps, installWithTasks } from "../../apis/boss.js";
 
-
 import { OsReleaseContext } from "../../contexts/Common.jsx";
 
 import { EmptyStatePanel } from "cockpit-components-empty-state.jsx";
