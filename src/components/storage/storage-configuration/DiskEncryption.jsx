@@ -77,7 +77,7 @@ export const DiskEncryption = ({ dispatch, setIsFormValid }) => {
     const encryptedDevicesCheckbox = content => (
         <Checkbox
           id={idPrefix + "-encrypt-devices"}
-          label={_("Encrypt my data")}
+          label={_("Set up additional disk encryption")}
           isChecked={luks.encrypted}
           onChange={(_event, isEncrypted) => {
               dispatch(setLuksEncryptionDataAction({ encrypted: isEncrypted }));
@@ -140,7 +140,10 @@ export const DiskEncryption = ({ dispatch, setIsFormValid }) => {
             >
                 <Content>
                     <Content component={ContentVariants.p}>
-                        {_("Secure your data using disk-based encryption. Only applies to new partitions")}
+                        {_("Workbench always encrypts your home directory with your user password.")}
+                    </Content>
+                    <Content component={ContentVariants.p}>
+                        {_("You can additionally enable full disk encryption and set a separate password. This password must be entered every time the computer starts.")}
                     </Content>
                 </Content>
                 {encryptedDevicesCheckbox(luks.encrypted ? encryptionContent : null)}
