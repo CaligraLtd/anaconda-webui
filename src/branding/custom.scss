@@ -7,14 +7,13 @@
   --brand-silver: #B5B7AE;
   --brand-aluminium: #E9EBE2;
   --brand-gold: #C2A049;
-  --brand-copper: #B65822;
 
   /* PatternFly 6 brand design tokens */
   --pf-t--global--color--brand--default: var(--brand-gold);
-  --pf-t--global--color--brand--hover: var(--brand-copper);
+  --pf-t--global--color--brand--hover: #A68A3D;
   --pf-t--global--color--brand--clicked: #8A6F30;
   --pf-t--global--text--color--brand--default: var(--brand-gold);
-  --pf-t--global--text--color--brand--hover: var(--brand-copper);
+  --pf-t--global--text--color--brand--hover: #A68A3D;
 }
 
 /* Dark mode adjustments */
